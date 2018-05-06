@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="SpringBoot Shiro权限 ERP系统的RBAC使用了Shiro模块   pom.xml      12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.shiro&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;shiro-spring&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T07:42:44.810Z">
+<meta property="og:updated_time" content="2018-05-06T08:09:22.644Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-boot-shiro">
 <meta name="twitter:description" content="SpringBoot Shiro权限 ERP系统的RBAC使用了Shiro模块   pom.xml      12345&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.shiro&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;shiro-spring&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt">
@@ -319,7 +319,7 @@
                 
               
 
-              <time title="Post created: 2018-05-06 15:15:00 / Updated at: 15:42:44" itemprop="dateCreated datePublished" datetime="2018-05-06T15:15:00+08:00">2018-05-06</time>
+              <time title="Post created: 2018-05-06 15:15:00 / Updated at: 16:09:22" itemprop="dateCreated datePublished" datetime="2018-05-06T15:15:00+08:00">2018-05-06</time>
             
 
             
@@ -389,7 +389,17 @@
 </li>
 <li><p>操作</p>
 <ul>
-<li>SysUser操作</li>
+<li><p>SysUser操作</p>
+<ul>
+<li>Dao层</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserInfoDao</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">UserInfo</span>,<span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**通过username查找用户信息;*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserInfo <span class="title">findByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Service层</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserInfoService</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**通过username查找用户信息;*/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserInfo <span class="title">findByUsername</span><span class="params">(String username)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfoServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserInfoService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> UserInfoDao userInfoDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserInfo <span class="title">findByUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"================UserInfoServiceImpl.findByUsername()==============="</span>);</span><br><span class="line">        UserInfo userInfo = userInfoDao.findByUsername(username);</span><br><span class="line">        <span class="keyword">return</span> userInfo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>配置</p>
